@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 8%;
+
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 8%;
+
+    --primary: 0 0% 5%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 8%;
+
+    --muted: 0 0% 93%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 0 0% 12%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 0 0% 12%;
+
+    --radius: 0.25rem;
+
+    /* Custom luxury tokens */
+    --gold: 0 0% 12%;
+    --gold-light: 0 0% 30%;
+    --gold-dark: 0 0% 5%;
+    --navy: 0 0% 5%;
+    --navy-light: 0 0% 15%;
+    --navy-dark: 0 0% 2%;
+    --ivory: 0 0% 100%;
+    --ivory-dark: 0 0% 96%;
+    --charcoal: 0 0% 20%;
+
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Montserrat', system-ui, sans-serif;
+
+    --shadow-luxury: 0 4px 30px hsla(0, 0%, 0%, 0.06);
+    --shadow-elevated: 0 12px 40px hsla(0, 0%, 0%, 0.10);
+    --shadow-gold: 0 0 20px hsla(0, 0%, 0%, 0.08);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 0 0% 95%;
+    --primary-foreground: 0 0% 5%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 0 0% 18%;
+    --accent-foreground: 0 0% 95%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 0 0% 80%;
+
+    --gold: 0 0% 80%;
+    --gold-light: 0 0% 60%;
+    --gold-dark: 0 0% 90%;
+    --navy: 0 0% 95%;
+    --navy-light: 0 0% 80%;
+    --navy-dark: 0 0% 98%;
+    --ivory: 0 0% 4%;
+    --ivory-dark: 0 0% 8%;
+    --charcoal: 0 0% 75%;
+
+    --shadow-luxury: 0 4px 30px hsla(0, 0%, 0%, 0.3);
+    --shadow-elevated: 0 12px 40px hsla(0, 0%, 0%, 0.4);
+    --shadow-gold: 0 0 20px hsla(0, 0%, 100%, 0.05);
+
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 0 0% 95%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 0 0% 80%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    cursor: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    letter-spacing: 0.02em;
+  }
+
+  a, button, [role="button"] {
+    cursor: none;
+  }
+}
+
+@layer components {
+  .gold-divider {
+    @apply w-px bg-foreground mx-auto;
+    height: 60px;
+  }
+
+  .gold-border {
+    border: 1px solid hsl(var(--accent));
+  }
+
+  .section-padding {
+    @apply py-24 px-6 md:px-12 lg:px-24;
+  }
+
+  .heading-xl {
+    font-family: var(--font-serif);
+    @apply text-4xl md:text-5xl lg:text-6xl font-medium tracking-wide leading-tight;
+  }
+
+  .heading-lg {
+    font-family: var(--font-serif);
+    @apply text-3xl md:text-4xl font-medium tracking-wide leading-tight;
+  }
+
+  .heading-md {
+    font-family: var(--font-serif);
+    @apply text-2xl md:text-3xl font-medium tracking-wide;
+  }
+
+  .body-text {
+    font-family: var(--font-sans);
+    @apply text-base font-light leading-relaxed text-muted-foreground;
+  }
+
+  .label-text {
+    font-family: var(--font-sans);
+    @apply text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground;
+  }
+
+  .btn-primary {
+    @apply px-8 py-3 text-xs font-medium uppercase tracking-[0.2em] transition-all duration-500;
+    font-family: var(--font-sans);
+    background: hsl(var(--navy));
+    color: hsl(var(--ivory));
+    border: 1px solid hsl(var(--navy));
+  }
+
+  .btn-primary:hover {
+    background: transparent;
+    color: hsl(var(--navy));
+  }
+
+  .btn-outline-gold {
+    @apply px-8 py-3 text-xs font-medium uppercase tracking-[0.2em] transition-all duration-500;
+    font-family: var(--font-sans);
+    background: transparent;
+    color: hsl(var(--primary-foreground));
+    border: 1px solid hsl(var(--primary-foreground) / 0.4);
+  }
+
+  .btn-outline-gold:hover {
+    background: hsl(var(--primary-foreground));
+    color: hsl(var(--primary));
+  }
+
+  .nav-link {
+    @apply relative text-xs font-medium uppercase tracking-[0.2em] transition-colors duration-300;
+    font-family: var(--font-sans);
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-px origin-bottom-right transition-transform duration-500 scale-x-0;
+    background: hsl(var(--accent));
+  }
+
+  .nav-link:hover::after {
+    @apply origin-bottom-left scale-x-100;
+  }
+
+  .property-card {
+    @apply overflow-hidden transition-all duration-700;
+    box-shadow: var(--shadow-luxury);
+  }
+
+  .property-card:hover {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .property-card:hover .property-image {
+    transform: scale(1.05);
+  }
+
+  .property-image {
+    @apply transition-transform ease-out;
+    transition-duration: 1.2s;
+  }
+
+  .gold-quote {
+    color: hsl(var(--foreground));
+    font-family: var(--font-serif);
+    @apply text-6xl leading-none;
+  }
+}
+
+/* Custom cursor styles */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid hsl(var(--foreground));
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  border-color: white;
+  transition: transform 0.15s ease-out, opacity 0.15s ease-out, background 0.15s ease-out;
+}
+
+.custom-cursor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-cursor.hovering {
+  transform: scale(1.8);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.cursor-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: white;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+  transform: scale(1);
+  opacity: 0.6;
+}
+
+.cursor-dot.active {
+  transform: scale(3);
+  opacity: 1;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Loading screen */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: hsl(var(--navy));
+}
