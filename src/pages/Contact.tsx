@@ -10,13 +10,30 @@ const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-    setForm({ name: "", email: "", phone: "", message: "" });
-  };
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz3GtUjt8_FaVYAzGmUrIWueLUs3RmCT1wqxoO1X-uJAUTnY-x3fbRs2R1R_44Q1Lt_/exec";
 
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  try {
+    await fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        message: form.message,
+      }),
+    });
+
+    setSubmitted(true);
+    setForm({ name: "", email: "", phone: "", message: "" });
+    setTimeout(() => setSubmitted(false), 4000);
+
+  } catch (error) {
+    alert("Submission failed. Please try again.");
+  }
+};
   return (
     <main>
       <SEOHead title="Contact Us" description="Get in touch with Badshah Property Advisor for premium real estate consultation in Mumbai." />

@@ -5,7 +5,6 @@ const stats = [
   { value: 500, suffix: "+", label: "Properties Sold" },
   { value: 28, suffix: "+", label: "Years Experience" },
   { value: 98, suffix: "%", label: "Client Satisfaction" },
-  { value: 100, suffix: "Cr+", label: "Worth Transacted" },
 ];
 
 const Counter = ({ target, suffix }: { target: number; suffix: string }) => {
@@ -17,7 +16,7 @@ const Counter = ({ target, suffix }: { target: number; suffix: string }) => {
     if (!inView) return;
 
     let start = 0;
-    const duration = 100;
+    const duration = 2000;
     const increment = target / (duration / 16);
 
     const timer = setInterval(() => {
@@ -37,7 +36,7 @@ const Counter = ({ target, suffix }: { target: number; suffix: string }) => {
   return (
     <span
       ref={ref}
-      className="font-serif text-4xl md:text-5xl text-white"
+      className="font-serif text-5xl md:text-6xl text-white block"
     >
       {count.toLocaleString()}
       {suffix}
@@ -51,21 +50,24 @@ const StatsCounter = () => {
 
   return (
     <section className="section-padding bg-black" ref={ref}>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-12 max-w-5xl mx-auto text-center">
-        {stats.map((stat, i) => (
-          <motion.div
-            key={stat.label}
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: i * 0.2 }}
-          >
-            <Counter target={stat.value} suffix={stat.suffix} />
-            
-            <p className="mt-4 text-white/60 text-[11px] tracking-[0.25em] uppercase">
-              {stat.label}
-            </p>
-          </motion.div>
-        ))}
+      <div className="max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16 text-center">
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: i * 0.2 }}
+              className="flex flex-col items-center"
+            >
+              <Counter target={stat.value} suffix={stat.suffix} />
+
+              <p className="mt-4 text-white/60 text-[11px] tracking-[0.25em] uppercase">
+                {stat.label}
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -35,37 +35,42 @@ const SEOHead = ({
       el.setAttribute("content", content);
     };
 
-    // Basic Meta
+    // ===== BASIC META =====
     setMeta("name", "description", description);
     if (keywords) setMeta("name", "keywords", keywords);
+    setMeta("name", "robots", "index, follow");
 
-    // Open Graph
+    // ===== OPEN GRAPH =====
     setMeta("property", "og:title", fullTitle);
     setMeta("property", "og:description", description);
     setMeta("property", "og:type", type);
     setMeta("property", "og:url", fullUrl);
     setMeta("property", "og:image", image);
     setMeta("property", "og:site_name", "Badshah Property Advisor");
+    setMeta("property", "og:locale", "en_IN");
 
-    // Twitter
+    // ===== TWITTER =====
     setMeta("name", "twitter:card", "summary_large_image");
     setMeta("name", "twitter:title", fullTitle);
     setMeta("name", "twitter:description", description);
     setMeta("name", "twitter:image", image);
 
-    // Canonical
+    // ===== CANONICAL =====
     let canonical = document.querySelector(
       'link[rel="canonical"]'
     ) as HTMLLinkElement;
+
     if (!canonical) {
       canonical = document.createElement("link");
       canonical.setAttribute("rel", "canonical");
       document.head.appendChild(canonical);
     }
+
     canonical.setAttribute("href", fullUrl);
 
-    // Local Business Schema (Real Estate Agent - Ujjain)
-    const schema = {
+    // ===== STRUCTURED DATA =====
+
+    const localBusinessSchema = {
       "@context": "https://schema.org",
       "@type": "RealEstateAgent",
       name: "Badshah Property Advisor",
@@ -73,7 +78,7 @@ const SEOHead = ({
       logo: `${BASE_URL}/favicon.ico`,
       image: image,
       description:
-        "Trusted real estate consultant in Ujjain offering residential plots, apartments, villas and commercial property investment advisory services.",
+        "Established in 1996, Badshah Property Advisor is a trusted real estate consultant in Ujjain offering residential, commercial and land advisory services.",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Freeganj Mini Chopati street near Gurudwara",
@@ -88,15 +93,29 @@ const SEOHead = ({
         longitude: "75.7885",
       },
       telephone: "+91 98260 44152",
-      email: "info@badshahproperty.in",
       areaServed: {
         "@type": "City",
         name: "Ujjain",
       },
+      foundingDate: "1996",
       priceRange: "₹₹₹",
     };
 
-    const scriptId = "jsonld-local";
+    const websiteSchema = {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "Badshah Property Advisor",
+      url: BASE_URL,
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${BASE_URL}/?search={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
+    };
+
+    const combinedSchema = [localBusinessSchema, websiteSchema];
+
+    const scriptId = "jsonld-global";
     let script = document.getElementById(scriptId) as HTMLScriptElement;
 
     if (!script) {
@@ -106,7 +125,8 @@ const SEOHead = ({
       document.head.appendChild(script);
     }
 
-    script.textContent = JSON.stringify(schema);
+    script.textContent = JSON.stringify(combinedSchema);
+
   }, [fullTitle, description, keywords, type, fullUrl, image]);
 
   return null;

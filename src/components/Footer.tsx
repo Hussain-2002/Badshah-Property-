@@ -18,8 +18,9 @@ const Footer = () => {
               PROPERTY ADVISOR
             </p>
             <p className="text-sm text-primary-foreground/60 leading-relaxed">
-              Redefining real estate excellence with trusted advisory,
-              luxury property consulting, and strategic investment solutions.
+              Trusted real estate consultant in Ujjain since 1996, offering
+              residential, commercial, and land advisory services with
+              complete transparency and strategic guidance.
             </p>
           </div>
 
@@ -29,19 +30,30 @@ const Footer = () => {
               Navigation
             </h4>
             <div className="flex flex-col gap-2">
-              {[
-                { label: "Home", path: "/" },
-                { label: "About", path: "/about" },
-                { label: "Contact", path: "/contact" },
-              ].map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors duration-300"
-                >
-                  {item.label}
-                </Link>
-              ))}
+              <Link
+                to="/"
+                className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors duration-300"
+              >
+                Home
+              </Link>
+              <Link
+                to="/about"
+                className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors duration-300"
+              >
+                About
+              </Link>
+              <Link
+                to="/properties"
+                className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors duration-300"
+              >
+                Properties
+              </Link>
+              <Link
+                to="/contact"
+                className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors duration-300"
+              >
+                Contact
+              </Link>
             </div>
           </div>
 
@@ -53,7 +65,8 @@ const Footer = () => {
             <div className="flex flex-col gap-2 text-sm text-primary-foreground/60">
               <p>info@badshahproperty.in</p>
               <p>+91 98260 44152</p>
-              <p>Freeganj Gurduwara, Ujjain, India</p>
+              <p>Freeganj, Ujjain, Madhya Pradesh</p>
+
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -69,15 +82,23 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-primary-foreground/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
           <p className="text-xs text-primary-foreground/40">
-            © 2026 Badshah Property Advisor. All rights reserved.
+            © {new Date().getFullYear()} Badshah Property Advisor. All rights reserved.
           </p>
+
           <div className="flex gap-6">
-            <span className="text-xs text-primary-foreground/40 cursor-pointer hover:text-primary-foreground transition-colors">
+            <Link
+              to="/privacy-policy"
+              className="text-xs text-primary-foreground/40 hover:text-primary-foreground transition-colors duration-300"
+            >
               Privacy Policy
-            </span>
-            <span className="text-xs text-primary-foreground/40 cursor-pointer hover:text-primary-foreground transition-colors">
-              Terms of Service
-            </span>
+            </Link>
+
+            <Link
+              to="/terms-and-conditions"
+              className="text-xs text-primary-foreground/40 hover:text-primary-foreground transition-colors duration-300"
+            >
+              Terms & Conditions
+            </Link>
           </div>
         </div>
 
