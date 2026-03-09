@@ -102,6 +102,18 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Developer Credit */}
+        <div className="text-center mt-6">
+          <a
+            href="https://hussainiitservices.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-primary-foreground/40 hover:text-primary-foreground transition-colors duration-300"
+          >
+            Designed & Developed by Hussain Maheshwarwala
+          </a>
+        </div>
+
       </div>
     </footer>
   );
