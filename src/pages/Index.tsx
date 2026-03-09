@@ -54,7 +54,7 @@ const Index = () => {
       <HeroSection />
       {/* <FeaturedProperties /> */}
       <StatsCounter />
-      <TestimonialSlider />
+      {/* <TestimonialSlider /> */}
       <CTASection />
     </main>
   );
